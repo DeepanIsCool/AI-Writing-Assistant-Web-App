@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Text</title>
+    <style>
+        /* Styles for the container and generated text */
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generated Text</h1>
+        <div class="generated-text">
+            <p>{{ generated_text }}</p>
+            <button id="copyButton">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the copy button element
+            var copyButton = document.getElementById('copyButton');
+
+            // Add event listener to the copy button
+            copyButton.addEventListener('click', function() {
+                // Select the generated text
+                var generatedText = document.querySelector('.generated-text p');
+                var range = document.createRange();
+                range.selectNode(generatedText);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+
+                // Copy the selected text to the clipboard
+                document.execCommand('copy');
+
+                // Deselect the text
+                window.getSelection().removeAllRanges();
+
+                // Show a message indicating that the text has been copied
+                alert('Text has been copied to clipboard');
+            });
+        });
+    </script>
+</body>
+</html>
